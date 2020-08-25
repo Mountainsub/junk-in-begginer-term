@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // キーボードからの入力値
+        int num = new Scanner(System.in).nextInt();
+        // 桁数
+        int count = 0;
+        // 文字列変換 
+        String number = "" +num;
+        // String number = Integer.toString(num);
+        count = number.length();
+ 
+        System.out.println(count);
+        
+        
+    }
+}
