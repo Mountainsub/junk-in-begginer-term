@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc= new Scanner(System.in);
+        int numA =sc.nextInt();// Your code here!
+        int numB =sc.nextInt();
+        int count = 0;
+        for(int i = numA;i <= numB ;i++){ //入力した２つの数間でfor文を２つ使って調べる//
+         for(int j=1;j < numB ;j++){ //固定したiに対してjを1からnumBまで調べる//
+             if(i == j*(j + 1)){
+                 count++;
+             }
+        }
+    }
+    System.out.print(count);
+    }
+}
+        
+    
+
