@@ -1,0 +1,371 @@
+\documentclass[dvipdfmx,cjk]{beamer} 
+%\documentclass[dvipdfm,cjk]{beamer} %% オプションは環境や利用するプログラムに
+%\documentclass[dvips,cjk]{beamer} %% よって変える
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{txfonts}
+\usepackage{ascmac}
+\usepackage{comment}
+\usepackage{amsrefs}
+\usepackage{pifont}
+\usepackage{ascmac}
+\usepackage{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}} %% しおりが文字化けしないように
+%\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+
+%\setbeamertemplate{navigation symbols}{} %% 右下のアイコンを消す
+
+%\usetheme{CambridgeUS} %% theme の選択
+%\usetheme{Boadilla} %% Beamer のディレクトリの中の
+\usetheme{Madrid} %% beamerthemeCambridgeUS.sty を指定
+%\usetheme{Antibes} %% 色々と試してみるといいだろう
+%\usetheme{Montpellier} %% サンプルが beamer\doc に色々とある。
+%\usetheme{Berkeley}
+%\usetheme{Goettingen}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+
+%\usecolortheme{rose} %% colortheme を選ぶと色使いが変わる
+%\usecolortheme{albatross}
+
+%\useoutertheme{shadow} %% 箱に影をつける
+\usefonttheme{professionalfonts} %% 数式の文字を通常の LaTeX と同じにする
+
+%\setbeamercovered{transparent} %% 消えている文字をうっすらと表示する
+
+ %% 定理に番号をつける
+\newtheorem{thm}{定理}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{proposition}[thm]{命題}
+\newtheorem{purpose}[thm]{研究目的}
+\theoremstyle{example}
+\newtheorem{exam}[thm]{例}
+\newtheorem{exam2}[thm]{例のつづき}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}[thm]{Question}
+\newtheorem{prob}[thm]{}
+\newtheorem{suppose}[thm]{仮定}
+\newtheorem{hope}[thm]{今後の展望}
+
+
+%\theoremstyle{definition}
+%\newtheorem{theorem}{定理}
+%\newtheorem*{theorem*}{定理}
+%\newtheorem{definition}[theorem]{定義}
+%\newtheorem*{definition*}{定義}
+
+
+
+%\begin{frame} %% 目次 (必要なければ省略)
+%\tableofcontents
+%\end{frame}
+
+%\section{箇条書き} %% セクション名
+%\begin{frame}
+%\frametitle{松本} %% フレームタイトル
+
+%\begin{itemize}
+%\item 豊科\pause %% \pause でとまる
+%\item 穂高\pause
+%\item 明科
+%\end{itemize}
+%\end{frame}
+
+%\section{定理型環境} %% 定理型環境が使える
+%\begin{frame} %% \newtheorem で新しい環境も作れる
+%\begin{thm}
+%定理型環境が使える。
+%使い方は普通の \LaTeX と同じ
+%\end{thm}
+%\pause
+
+%\begin{proof}
+%証明も書ける。
+%\end{proof}
+%\pause
+
+%\begin{exam} %% 色が違う
+%example
+%\end{exam}
+%\end{frame}
+
+%\section{文字の色} %% 文字の色を変える
+%\begin{frame}
+%\frametitle{文字の色を変えてみよう}
+%{\color{red}赤}\pause
+%{\color{blue}青}\pause
+%{\color{green}緑}
+%\end{frame}
+
+\begin{document}
+
+
+
+%%%%%---------------------------1枚目ーーーーーーーーーーーーーー
+
+\begin{frame}
+\begin{purpose}
+任意種数のファイブレーション構造を持つ複素代数曲面の特異ファイバーの因子としての形,そこから決まる双対グラフ,および付随する格子構造などについて考察する.\\
+\end{purpose}
+\vspace{10mm}
+本講演では,種数１の場合,すなわち楕円曲面の特異ファイバーについて詳細な考察を述べる.
+\end{frame}
+%%%%%-----------------------
+
+\begin{frame}
+\begin{dfn}[楕円曲線 elliptic curve]
+体K上定義された{\color{red}\large{楕円曲線}}$E/K$とは$\mathbf{P}^1$の{\color{red}\large{相異なる}}$4$点で分岐した$2$重被覆で$K$有理点をもつものである.
+\end{dfn}
+\begin{thm}
+複素数$\mathbf{C}$上の$E$は$\mathbf{P}^1/K$の非同次座標$x$を上手くとれば
+$$y^2=x^3+ax+b \hspace{4mm}(a ,b \in \mathbf{C})$$
+で表される. 
+すなわち$E/\vspace{0.1mm}\mathbf{C}$は
+$x^{3}+ax+b=0$の{\color{red}\large{相異なる}}$3$根と$x=\infty$で分岐する$2$重被覆である.\\
+\end{thm}
+\vspace{8mm}
+以下, $E$を$\mathbf{P}^1 \times \mathbf{P}^1$の部分代数多様体と考える.\\
+\end{frame}
+%---------------------------------------------------------------
+
+\begin{frame}
+\begin{dfn}[ファイブレーションと楕円曲面]
+コンパクト非特異射影的代数曲面を$S$とする.
+$S$からコンパクト非特異射影的代数曲線$C$への全射正則写像をファイブレーションと呼ぶ. 
+$S$にファイブレーションが定義されるとき, $S$はファイバー構造$f:S \rightarrow C$をもつという.\\
+$Q \in C$の引き戻し$f^{-1}(Q)$を, {\color{red}\large{ファイバー}}と呼ぶ.\\
+任意の$Q\in C$に対し, $f^{-1}(Q)$が代数曲線であり, $S$の生成ファイバーが曲線$C$上の関数体$K$上の楕円曲線$E/K$と同型であるとき, $S$を$E/K$に付随する{\color{red}\large{楕円曲面}}と定義する.\\
+ファイバーが非特異楕円曲線でないとき,{\color{red}\large{特異ファイバー}}と呼ぶ.\\
+\end{dfn}
+\begin{suppose}
+楕円曲面$S$において, 特異ファイバーが1つ存在すると仮定する. 
+\end{suppose}
+\vspace{4mm}
+$Q \in C$のファイバー$f^{-1}(Q)$が特異ファイバーとし, 点$Q$周りの近傍を考える.
+\end{frame}
+
+%-------------------------------------------------------------
+\begin{frame}
+\begin{thm}
+楕円曲面の特異ファイバーは,以下の8つのタイプに分類できる.\\
+\begin{center}
+$\mathrm{I_{m} \hspace{2mm}(m\geqq1)},\mathrm{I\vspace{-,1em}I}, \mathrm{I\vspace{-,1em}I\vspace{-,1em}I}, \mathrm{I\vspace{-,1em}V}, \mathrm{I^{*}}, \mathrm{I\vspace{-,1em}I_{b}^{*}}\hspace{2mm}(b\geqq0), \mathrm{I\vspace{-,1em}I\vspace{-,1em}I^{*}}, \mathrm{I\vspace{-,1em}V^{*}}$
+\end{center}
+\vspace{5mm}
+\end{thm}
+\end{frame}
+
+
+
+%-----------------------------------------------------------
+\begin{frame}
+
+\begin{textblock*}{0.4\linewidth}(70pt, 10pt)
+    \centering
+    \includegraphics[width=38mm]{Ino2.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(-15pt, 10pt)
+    \centering
+    \includegraphics[width=40mm]{Ino1.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(150pt, 10pt)
+    \centering
+    \includegraphics[width=40mm]{Ino3.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(230pt, 10pt)
+    \centering
+    \includegraphics[width=40mm]{Inon.png}
+\end{textblock*}
+
+\begin{textblock*}{0.4\linewidth}(70pt, 90pt)
+    \centering
+    \includegraphics[width=40mm]{san.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(0pt, 90pt)
+    \centering
+    \includegraphics[width=40mm]{ni.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(150pt, 90pt)
+    \centering
+    \includegraphics[width=40mm]{yon.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(230pt, 90pt)
+    \centering
+    \includegraphics[width=40mm]{yonstar.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(10pt, 170pt)
+    \centering
+    \includegraphics[width=40mm]{sanstar.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(80pt, 170pt)
+    \centering
+    \includegraphics[width=40mm]{nistar.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(150pt, 170pt)
+    \centering
+    \includegraphics[width=40mm]{I0star.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(220pt, 170pt)
+    \centering
+    \includegraphics[width=40mm]{Instar.png}
+\end{textblock*}
+\end{frame}
+\begin{frame}
+$\Delta$を複素数$\mathbf{C}$の原点の近傍とする. $f:X \rightarrow \Delta$を楕円曲面, $\Delta$上の生成ファイバーを
+$$y^2=x^3+a(t)x+b(t)$$
+で与えられるものとする. 
+ただし $a(t)$, $b(t)$ $(t\in \Delta)$は$\Delta$上の正則関数とする.
+このとき,楕円曲面$X$は, $\mathbf{P}^1\times \Delta$の$2$重被覆で与えられる.\\
+\vspace{5mm}
+この$X$の特異ファイバーを考えていく.\\
+標準的特異点解消(canonical resolution)の方法により,ファイバーを決定づける.\\
+\end{frame}
+
+%-------------------------------------------------------------
+
+\begin{frame}
+\begin{dfn}
+$\mathbf{P}^1\times \Delta$上
+$$x^3+a(t)x+b(t)=0$$
+で定義される因子を$B$とする．$x=\infty$で定義される因子を$\Delta_{\infty}$とする.
+\end{dfn}
+
+\vspace{5mm}
+$B\cup \Delta_{\infty}$は$\mathbf{P}^1\times \Delta$上の$2$重被覆$X$の分岐集合である. \\
+\vspace{5mm}
+\begin{dfn}[]
+$\mathbf{P}^1\times \Delta$上
+$$\Gamma=\{(x,t)\in \mathbf{P}^1 \times \Delta\mid t=0\}$$
+とする.
+\end{dfn}
+\begin{remark}
+$B$が$x$の3次式なので, $B$と$\Gamma$が3点で交わる
+\end{remark}
+$B$と$\Gamma$の交わり方によって分類して特異ファイバーを求める.
+\end{frame}
+
+
+%-----------------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=10cm]{goodnote1.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=10cm]{goodnote2.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+
+\begin{textblock*}{0.4\linewidth}(10pt, 10pt)
+    \centering
+    (例)$B:(x^2-t^3)(x-1)=0$
+\end{textblock*}
+
+\begin{textblock*}{0.4\linewidth}(-40pt, 100pt)
+    \centering
+    \includegraphics[width=80mm]{figure.png}
+\end{textblock*}
+
+
+\begin{textblock*}{0.4\linewidth}(128pt, 90pt)
+    \centering
+    \includegraphics[width=80mm]{figure2.png}
+\end{textblock*}
+
+
+\begin{textblock*}{0.4\linewidth}(104pt, 140pt)
+    \centering
+    $\Huge{\leftarrow}$\\
+\begin{align} 
+\left\{
+\begin{array}{ll} 
+x=x_1t_1 \\
+\vspace{1mm}t=t_1\nonumber
+\end{array}
+\right.
+\end{align}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(200pt, 220pt)
+    \centering
+    {\small
+    $t_1^2(x_1^2-t_1)(x_1t_1-1)=0$\\
+    $t_1=0$が例外曲線に相当する.
+} 
+    
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(225pt, 5pt)
+    \centering
+    {\scriptsize　\begin{itemize}
+\item $X$に対し,左下のブローアップで得られた代数多様体を$Y$とする. 
+\item  $\tilde{\Gamma}$と$\tilde{B}$の交点が1つであることは計算により確かめられる.
+    \end{itemize}
+}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(90pt, 220pt)
+    \centering
+    {\scriptsize　ある座標近傍上…} 
+\end{textblock*}
+\begin{textblock*}{0.6\linewidth}(10pt, 30pt)
+    \centering
+    ある点P中心のブローアップとは,\\$P$の座標近傍$U$に対し, $\tilde{U}$を対応させる写像のことである.\\
+    $U \times \mathbf{P}^1\supset \tilde{U} \rightarrow U \hspace{1mm};\hspace{1mm} (x,y)\times (\zeta_1,\zeta_2)\mapsto (x,y)$ 
+    $\tilde{U}=\{(x,y)\times (\zeta_1,\zeta_2)\mid x\zeta_2 -\zeta_1y=0\}$
+\end{textblock*}
+\end{frame}
+\begin{frame}
+
+\begin{textblock*}{0.4\linewidth}(78pt, 16pt)
+    \centering
+    \includegraphics[width=70mm]{figure4.png}
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(70pt, 128pt)
+    \centering
+    \includegraphics[width=70mm]{figure3.png}
+\end{textblock*}
+
+\begin{textblock*}{0.4\linewidth}(60pt, 200pt)
+    \centering
+   $\mathbf{P}^1\times \Delta$
+\end{textblock*}
+\begin{textblock*}{0.4\linewidth}(240pt, 225pt)
+    \centering
+    実線が,分岐点である.
+\end{textblock*}
+
+
+\end{frame}
+
+%-----------------------------------------------------------
+\begin{frame}
+\begin{figure}[b]
+\begin{center}
+\includegraphics[width=9cm]{triangle.pdf}
+\end{center}
+\end{figure}
+
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}
+\begin{hope}
+\begin{enumerate}
+\item 任意の種数をもちファイブレーション構造を持つ複素代数曲面, ファイバータイプを分析する.
+\item 上で得られた格子構造(例えばグラム行列やディンキン図形)を分析する
+\end{enumerate}
+\end{hope}
+
+\end{frame}
+
+
+\end{document}
